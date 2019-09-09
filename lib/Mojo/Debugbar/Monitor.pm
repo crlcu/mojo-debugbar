@@ -16,7 +16,7 @@ sub count {
     return scalar(@{ shift->items });
 }
 
-=head2 count
+=head2 render
     Returns the html
 =cut
 

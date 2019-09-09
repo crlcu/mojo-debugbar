@@ -19,6 +19,10 @@ has 'icon' => '<i class="icon-database"></i>';
 has 'name' => 'Queries';
 has 'seen' => sub {{}};
 
+=head2 render
+    Returns the html
+=cut
+
 sub render {
     my $self = shift;
 
@@ -70,6 +74,10 @@ sub render {
     );
 }
 
+=head2 stop
+    Stop debugging and clear "seen" items
+=cut
+
 sub stop {
     my $self = shift;
 
@@ -80,6 +88,10 @@ sub stop {
 
     $self->seen({});
 }
+
+=head2 start
+    Change the debugobj for DBIX storage and record queries
+=cut
 
 sub start {
     my $self = shift;

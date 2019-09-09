@@ -14,6 +14,10 @@ has 'recorder';
 has 'trace' => 1;
 has 'query';
 
+=head2 query_start
+    When a query is started, store the query
+=cut
+
 sub query_start {
     my ($self, $string, @bind) = @_;
 
@@ -45,6 +49,9 @@ sub query_start {
     $self->query({ string => $string, sql => $sql, params => \@bind, started_at => time(), frames => \@frames });
 }
 
+=head2 query_end
+    After a query was executed, update the query log
+=cut
 
 sub query_end {
     my ($self, $string) = @_;

@@ -4,6 +4,10 @@ use Mojo::Base "Mojo::Debugbar::Monitor";
 has 'icon' => '<i class="icon-file-code"></i>';
 has 'name' => 'Templates';
 
+=head2 render
+    Returns the html
+=cut
+
 sub render {
     my $self = shift;
 
@@ -25,6 +29,10 @@ sub render {
         $rows
     );
 }
+
+=head2 start
+    Listen for "before_render" event and store template names
+=cut
 
 sub start {
     my $self = shift;
