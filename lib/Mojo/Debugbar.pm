@@ -5,17 +5,25 @@ use Mojo::Debugbar::Monitors;
 use Mojo::Loader qw(load_class);
 use Mojo::Server;
 
-our $VERSION = '0.0.1';
+our $VERSION = '0.0.2';
 
 has 'app' => sub { Mojo::Server->new->build_app('Mojo::HelloWorld') }, weak => 1;
-has 'config' => sub { {} };
+has 'config' => sub {{
+    hide_empty  => 0,
+    monitors    => [
+        'Mojo::Debugbar::Monitor::Request',
+        'Mojo::Debugbar::Monitor::DBIx',
+        'Mojo::Debugbar::Monitor::Template',
+        'Mojo::Debugbar::Monitor::ValidationTiny',
+    ],
+}};
 
 has 'monitors' => sub {
     my $self = shift;
 
     my @monitors;
 
-    foreach my $module (@{ $self->app->config->{ debugbar }->{ monitors } || [] }) {
+    foreach my $module (@{ $self->config->{ monitors } || [] }) {
         my $monitor = _monitor($module, 1);
 
         push(@monitors, $monitor->new(app => $self->app));
@@ -23,7 +31,7 @@ has 'monitors' => sub {
 
     return Mojo::Debugbar::Monitors->new(
         registered  => \@monitors,
-        hide_empty  => $self->app->config->{ debugbar }->{ hide_empty },
+        hide_empty  => $self->config->{ hide_empty },
     );
 };
 
