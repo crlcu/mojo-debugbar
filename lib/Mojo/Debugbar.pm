@@ -15,6 +15,7 @@ has 'config' => sub {{
         'Mojo::Debugbar::Monitor::DBIx',
         'Mojo::Debugbar::Monitor::Template',
         'Mojo::Debugbar::Monitor::ValidationTiny',
+        'Mojo::Debugbar::Monitor::Git',
     ],
 }};
 
