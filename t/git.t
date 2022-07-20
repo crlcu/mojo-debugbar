@@ -11,7 +11,3 @@ BEGIN {
 }
 
 my $git = Mojo::Debugbar::Monitor::Git->new();
-#my $git_info = $git->git_info('/Users/jon/repos/jontaylor/mojo-debugbar');
-
-use Data::Dumper;
-
