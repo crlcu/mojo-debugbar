@@ -65,11 +65,11 @@ sub git_info {
     my $home = shift;
 
 
-    my $command = "git -P --work-tree=$home log -n1 --no-color --decorate";
+    my $command = "/usr/bin/git --no-pager -C $home log -n1 --no-color --decorate";
     my $old_path = $ENV{'PATH'};
     $old_path =~ /(.+)/;
     $old_path = $1;
-    $ENV{'PATH'} = $old_path;
+    $ENV{'PATH'} = $old_path . ':/usr/local/bin';
     
     my $git_output = `$command`;
 
