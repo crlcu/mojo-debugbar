@@ -5,3 +5,9 @@ Revision history for Mojo::Debugbar
 
 0.0.2   2019-09-09
         Update config
+
+0.0.3   2019-10-02
+        Add Session monitor
+
+0.0.4   2022-07-20
+        Add Git monitor
